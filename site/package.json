@@ -1,0 +1,26 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "description": "Site de teste para implementar um host com Next React com NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willdkdevops/Projeto_NodeReact.git"
+  },
+  "author": "William Derek Dias",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willdkdevops/Projeto_NodeReact/issues"
+  },
+  "homepage": "https://github.com/willdkdevops/Projeto_NodeReact#readme",
+  "dependencies": {
+    "next": "^10.0.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}

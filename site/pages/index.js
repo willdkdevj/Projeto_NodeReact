@@ -1,12 +1,23 @@
 import Menu from '../components/Menu';
 import Rodape from '../components/Rodape';
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+import Head from 'next/head'
 import React from 'react';
 import { Jumbotron, Container } from 'reactstrap';
 
+library.add(fas)
 
 function Home(){
     return (
         <div><Menu/>
+        <Head>
+            <title>Supernova Tech</title>
+            <meta name="description" content="Site sobre desenvolvimento de sistemas, sites, aplicativos e outras tecnologias" />
+        </Head>
             <Jumbotron fluid className="descr-top">
                 <style>
                     {`.descr-top{
@@ -50,7 +61,7 @@ function Home(){
                 <div className="row">
                     <div className="col-md-4">
                         <div className="rounded-circle circulo centralizar">
-                            a
+                            <FontAwesomeIcon icon="code-branch" />
                         </div>
                         <h2 className="mt-4 mb-4">Front-End</h2>
                         <p className="lead pb-4">
@@ -59,7 +70,7 @@ function Home(){
                     </div>
                     <div className="col-md-4">
                         <div className="rounded-circle circulo centralizar">
-                            b
+                            <FontAwesomeIcon icon="code" />
                         </div>
                         <h2 className="mt-4 mb-4">Back-End</h2>
                         <p className="lead pb-4">
@@ -68,7 +79,7 @@ function Home(){
                     </div>
                     <div className="col-md-4">
                         <div className="rounded-circle circulo centralizar">
-                            c
+                            <FontAwesomeIcon icon="cloud-upload-alt" />
                         </div>
                         <h2 className="mt-4 mb-4">Full Stack</h2>
                         <p className="lead pb-4">Ut numquam ipsam et voluptatem dignissimos et similique molestiae ut dolorem enim. </p>

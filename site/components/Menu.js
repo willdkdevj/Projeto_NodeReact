@@ -12,7 +12,8 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText
+  NavbarText,
+  Container // trabalha com o tamanho da página de modo responsivo
 } from 'reactstrap';
 
 const Menu = (props) => {
@@ -23,43 +24,53 @@ const Menu = (props) => {
 
     return (
         <div>
-            <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">Supernova Tech</NavbarBrand>
-                <NavbarToggler onClick={toggle} />
-                <Collapse isOpen={isOpen} navbar>
-                <Nav className="mr-auto" navbar>
-                    <NavItem>
-                    <NavLink href="/">Home</NavLink>
-                    </NavItem>
-                    <NavItem>
-                    <NavLink href="/">Portfólio</NavLink>
-                    </NavItem>
-                    <NavItem>
-                    <NavLink href="/">About Me</NavLink>
-                    </NavItem>
-                    <NavItem>
-                    <NavLink href="https://github.com/willdkdevops">GitHub</NavLink>
-                    </NavItem>
-                    <UncontrolledDropdown nav inNavbar>
-                    <DropdownToggle nav caret>
-                        Projects
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                        <DropdownItem>
-                        Project 1
-                        </DropdownItem>
-                        <DropdownItem>
-                        Project 2
-                        </DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>
-                        All Projects
-                        </DropdownItem>
-                    </DropdownMenu>
-                    </UncontrolledDropdown>
-                </Nav>
-                <NavbarText>William Derek</NavbarText>
-                </Collapse>
+            <style>
+                {`.menu-color{
+                    background-color: #00080F;
+                }`}
+            </style>
+            <Navbar className="menu-color" dark expand="md">
+                <Container>
+                    <NavbarBrand href="/">Supernova Tech</NavbarBrand>
+                    <NavbarToggler onClick={toggle} />
+                    <Collapse isOpen={isOpen} navbar>
+                    <Nav className="mr-auto" navbar>
+                        <NavItem>
+                        <NavLink href="/">Home</NavLink>
+                        </NavItem>
+                        <NavItem>
+                        <NavLink href="/">Portfólio</NavLink>
+                        </NavItem>                                               
+                        <UncontrolledDropdown nav inNavbar>
+                        <DropdownToggle nav caret>
+                            Projects
+                        </DropdownToggle>
+                        <DropdownMenu right>
+                            <DropdownItem>
+                            Project 1
+                            </DropdownItem>
+                            <DropdownItem>
+                            Project 2
+                            </DropdownItem>
+                            <DropdownItem divider />
+                            <DropdownItem>
+                            All Projects
+                            </DropdownItem>
+                        </DropdownMenu>
+                        </UncontrolledDropdown>                        
+                        <NavItem>
+                        <NavLink href="https://github.com/willdkdevops">GitHub</NavLink>
+                        </NavItem>
+                        <NavItem> 
+                        <NavLink href="/">About Me</NavLink>
+                        </NavItem>
+                        <NavItem>
+                        <NavLink href="/contato">Contact Us</NavLink>
+                        </NavItem>
+                    </Nav>
+                    <NavbarText>William Derek</NavbarText>
+                    </Collapse>
+                </Container>
             </Navbar>
         </div>
     );

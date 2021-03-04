@@ -1,15 +1,71 @@
 # Trabalhando com Express (JavaScript)
-> Modelo NodeJS que trabalha com o Framework Express para gerenciar as páginas JSs do projeto.
+> Este projeto constitui na criação de um site, uma API transacional e um app mobile utilizando como plataforma o NodeJS.
 
 [![NPM Version][NPM-image]][npm-url]
 [![Bundle Size][npm-bundle-size]][npm-url]
 [![NODE Version][NODE-image]][node-url]
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png?w=283)  
+Neste projeto JS foi criado um site, uma API e um app mobile para a plataforma de digital de uma empresa fictícia (Supernova Tech), na qual é baseada no NodeJS, utilizando bibliotecas do [React](https://pt-br.reactjs.org/), [NextJS](https://nextjs.org/) e dos frameworks [Reactstrap](https://reactstrap.github.io/) e [Bootstrap](https://getbootstrap.com/).
 
-Neste projeto JS foi criado um arquivo gerenciador (index) na qual mapeia todas as páginas do projeto.
-Ele funciona como uma tabela de roteamento, que permite descrever quais são as rotas válidas para acessar seguramente as páginas de um projeto JS. Mas não se resumi a isso, pois ele fornece uma camada fina de recursos para aplicativos da web, no entanto, nos restrigeremos ao roteamento.
+Desta forma, a premissa é ter o NodeJS instalado para poder instalar as bibliotecas e suas derivadas do React, pois o React não é tão otimizado pelos buscadores de site, mas o Next JS possuí a funcionalidade Server-Side Rendering (SSR) e a geração de sites estáticos para aplicativos web baseados em React, permitindo construir páginas HTML otimizadas para buscadores.
 
+Já o Bootstrap 4 permite que o projeto seja responsivo para dispositivos móveis na web, com uma gama de componentes para a construção de páginas web, com recursos como CSS, XHTML e JS, permitindo a alta produtividade.
+
+![](/site/assets/Screenshot_2021-03-04 Supernova Tech.png?w=283) 
+
+
+## Versões dos Programas Utilizados no Projeto (Site)
+Segue na tabela abaixo, as versões dos programas e bibliotecas utilizadas para o desenvolvimento do site.
+|     Programa    |   Versão   |
+|-----------------|------------|
+| NodeJS          |  v10.19.0  |
+| NPM             |  v6.14.4   |
+| NextJS          |  v10.0.7   |
+| React/React-DOM |  v17.0.1   |
+| Reactstrap      |  v8.9.0    |
+| Bootstrap       |  v4.6.0    | 
+
+As bibliotecas presentes nesta tabela também podem ser vistas no arquivo ``package.json``, em *dependencies*.
+
+
+## Programas Necessários Fundamentais para Compilação do Projeto
+É necessário antes de tudo ter o NodeJS instalado em sua máquina, caso não, abra o seu terminal e digite o comando:
+```sh
+sudo apt install nodejs
+```
+Também é necessário possuir um gerenciador de pacotes JS na máquina, onde o mais comum utilizado é o NPM. Desta forma, caso seja necessário instalá-lo execute o seguinte comando no terminal:
+```sh
+sudo apt install npm
+```
+
+
+## O Que É Necessário para Executar o Projeto Baixado
+Com o projeto baixado em sua máquina entre no diretório ``site/`` e execute o seguinte comando para permitir a instalação de dependências:
+```sh
+npm install
+```
+Após a instalação das dependências, para executar o projeto execute:
+```sh
+npm run dev
+```
+
+E abra o projeto (site) em <http://localhost:3000>
+
+
+## Sobre a Implementação do Site
+
+
+// Obtido a importação do Framework (CSS) em: https://reactstrap.github.io/
+```sh
+import 'bootstrap/dist/css/bootstrap.min.css';
+```
+
+// Obtido função padrão do Next em: https://nextjs.org/docs/basic-features/built-in-css-support
+```sh
+export default function MyApp({ Component, pageProps }) {
+    return <Component {...pageProps} />
+  }
+```
 
 ## Etapas para Executar este Projeto na Máquina
 Primeiro se faz necessário ter o Node JS instalado na maquina. Desta forma, para verificar se o host possui ele instalado execute o comando:

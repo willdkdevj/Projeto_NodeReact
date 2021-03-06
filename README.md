@@ -81,6 +81,27 @@ sudo apt install nodejs
 ```
 
 
+## Inclusão do Framework Bootstrap ao Projeto
+Para incluir o framework Bootstrap 4 para tornar o site responsivo, permitindo um layout moldado a dispositivos móveis, precisamos incluir os seguintes comandos:
+```sh
+npm install --save bootstrap
+```
+O parâmetro ``save`` permite que seja inserida a dependencia ao projeto. Isto é comprovado ao abrir o arquivo ``package.json``.
+Também foi incluído o framework Reactstrap, pois o Bootstrap não inclui bibliotecas css, onde também é utilizado o parâmetro ``save`` para inserir a dependencia ao projeto. Desta forma, executamos o seguinte comando:
+```sh
+npm install --save reactstrap react react-dom
+```
+Para incluir o framework ao projeto foi criado o arquivo de referência ``_app.js`` (sim tem um underscore na frente) e importado sua biblioteca no diretório ``pages/``.
+Esta informação pode ser obtida pelo site do [Reactstrap](https://reactstrap.github.io/)
+```sh
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+export default function MyApp({ Component, pageProps }) {
+    return <Component {...pageProps} />
+  }
+```
+A função ``MyApp`` permite o uso de componentes importados nas páginas JS, obtido no site do [NextJS](https://nextjs.org/docs/basic-features/built-in-css-support#adding-a-global-stylesheet) no tópico *Adicionando Estilos Globalmente*.
+
 ## Etapas para baixar o Framework Express
 Depois iremos instalar o framework [Express](https://expressjs.com/pt-br/) no diretório raiz de nosso projeto, onde este framework permite trabalhar de forma simples a parametrização das rotas de paginas em nosso projeto. 
 

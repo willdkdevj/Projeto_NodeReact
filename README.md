@@ -1,4 +1,4 @@
-# Trabalhando com Express (JavaScript)
+# Projeto de um Site, uma API e um App Mobile (JavaScript)
 > Este projeto constitui na criação de um site, uma API transacional e um app mobile utilizando como plataforma o NodeJS.
 
 [![NPM Version][NPM-image]][npm-url]
@@ -33,11 +33,18 @@ As bibliotecas presentes nesta tabela também podem ser vistas no arquivo ``pack
 ```sh
 sudo apt install nodejs
 ```
+
 Também é necessário possuir um gerenciador de pacotes JS na máquina, onde o mais comum utilizado é o NPM. Desta forma, caso seja necessário instalá-lo execute o seguinte comando no terminal:
 ```sh
 sudo apt install npm
 ```
 
+Agora instalamos o Nodemon que é uma ferramenta que auxilia o desenvolvimento de aplicativos baseados em NodeJS, reiniciando automaticamente o aplicativo quando ocorre mudanças nos arquivos no diretório monitorado. Desta forma, para instala-lo digite o comando:
+```sh
+sudo npm install -g nodemon
+```
+
+O parâmetro ``-g`` permite executá-lo de modo global em sua máquina, desta forma, também em seus projetos. Inclusive o ideal é reiniciar a máquina após sua instalação.
 
 ## O Que É Necessário para Executar o Projeto Baixado
 Com o projeto baixado em sua máquina entre no diretório ``site/`` e execute o seguinte comando para permitir a instalação de dependências:
@@ -51,21 +58,6 @@ npm run dev
 
 E abra o projeto (site) em <http://localhost:3000>
 
-
-## Sobre a Implementação do Site
-
-
-// Obtido a importação do Framework (CSS) em: https://reactstrap.github.io/
-```sh
-import 'bootstrap/dist/css/bootstrap.min.css';
-```
-
-// Obtido função padrão do Next em: https://nextjs.org/docs/basic-features/built-in-css-support
-```sh
-export default function MyApp({ Component, pageProps }) {
-    return <Component {...pageProps} />
-  }
-```
 
 ## Etapas para Executar este Projeto na Máquina
 Primeiro se faz necessário ter o Node JS instalado na maquina. Desta forma, para verificar se o host possui ele instalado execute o comando:
@@ -86,11 +78,15 @@ Para incluir o framework Bootstrap 4 para tornar o site responsivo, permitindo u
 ```sh
 npm install --save bootstrap
 ```
+
 O parâmetro ``save`` permite que seja inserida a dependencia ao projeto. Isto é comprovado ao abrir o arquivo ``package.json``.
 Também foi incluído o framework Reactstrap, pois o Bootstrap não inclui bibliotecas css, onde também é utilizado o parâmetro ``save`` para inserir a dependencia ao projeto. Desta forma, executamos o seguinte comando:
 ```sh
 npm install --save reactstrap react react-dom
 ```
+
+O React foi essencial para utilizar componentes interativos em conjunto com o ReactDOM, permitindo minimizar eventuais erros que poderiam ocorrer na criação das interfaces do usuário (User Interface - UI). Isto porque seus componentes são partes lógicas que descrevem uma parte específica da interface do usuário.
+
 Para incluir o framework ao projeto foi criado o arquivo de referência ``_app.js`` (sim tem um underscore na frente) e importado sua biblioteca no diretório ``pages/``.
 Esta informação pode ser obtida pelo site do [Reactstrap](https://reactstrap.github.io/)
 ```sh
@@ -101,6 +97,36 @@ export default function MyApp({ Component, pageProps }) {
   }
 ```
 A função ``MyApp`` permite o uso de componentes importados nas páginas JS, obtido no site do [NextJS](https://nextjs.org/docs/basic-features/built-in-css-support#adding-a-global-stylesheet) no tópico *Adicionando Estilos Globalmente*.
+
+ Depois de todos estes passos, para conseguir utilizar todos os componentes necessários para a construção das páginas, foi necessário realizar os importes ``import`` a biblioteca. Por exemplo, para utilizar o [React](https://reactstrap.github.io/) na página foi utilizado a seguinte linha de comando:
+ ```sh
+ import React from 'react';
+ ```
+
+ Já para importarmos componentes do reactscrap foi utilizada a linha de comando:
+ ```sh
+ import { Jumbotron, Button, Container } from 'reactscrap';
+ ```
+
+ Onde entre as chaves listamos todos os componentes que foram utilizados na construção da página web, onde no caso do React, ele se concentra em renderizá-las, proporcionando um foco especial no projeto de UI.
+
+
+# O Desenvolvimento da API
+> A função da API é de ser o intermediário entre o site, o aplicativo móvel e o banco de dados.
+
+Foi continuado o uso do NodeJS para a implementação, mas desta vez, foi para construção de uma *Application Programming Interface* (API). Ela será responsável pela integração com o banco de dados, desta forma, ela que irá receber as requisições e devolver as respostas correspondentes as requisições.
+
+## O Que É Necessário para Executar o Projeto Baixado
+Com o projeto baixado em sua máquina entre no diretório ``API/`` e execute o seguinte comando para permitir a instalação de dependências:
+```sh
+npm install
+```
+Após a instalação das dependências, para executar o projeto execute:
+```sh
+nodemon app.js
+```
+
+E abra o projeto (API) em <http://localhost:8080>
 
 ## Etapas para baixar o Framework Express
 Depois iremos instalar o framework [Express](https://expressjs.com/pt-br/) no diretório raiz de nosso projeto, onde este framework permite trabalhar de forma simples a parametrização das rotas de paginas em nosso projeto. 

@@ -176,11 +176,72 @@ app.get("/portfolio", function(req, res){
 app.listen(8081)
 ```
 
-Neste arquivo estamos utilizando o método send() do parâmetro res só para apresentar uma frase no momento que invocarmos a página, só para exemplificação, mas neste local é que instanciamos as páginas propriamente dito.
+Neste arquivo também consta a inclusão do [MongoDB](https://www.mongodb.com/cloud/atlas/) como o banco de dados da API, mas antes incluimos sua dependencia ao arquivo package.json utilizando o seguinte comando:
+```sh
+npm install --save mongodb
+```
+> Caso apresente erro em sua execução, repita o comando para que ele realize o processo novamente
+
+Desta forma, foi implementada o driver do MongoDB e as dependencias foram aplicadas ao projeto. Na qual, na sequencia foi inserido uma segunda dependência relacionada ao MongoDB, denominada de mongoose, que é uma ferramenta que traduz os registros que vem do banco de dados para um objeto JavaScript (Transacional) para permitir o uso pela aplicação. O comando fornecido foi:
+```sh
+npm install --save mongoose
+```
+> Caso apresente erro em sua execução, repita o comando para que ele realize o processo novamente
+
+Assim foi incluído o ``mongoose`` no projeto ao mapeá-lo em uma constante no app.js.
+```sh
+const mongoose = require('mongoose');
+```
+
+E para concluir, foi adicionado o método para conexão inserindo os parametros para conexão com o banco de dados na nuvem (MongoDB Atlas)
+```sh
+mongoose.connect(
+    'mongodb+srv://<username>:<password>@cluster0.<idcluster>.mongodb.net/<databaseName>?retryWrites=true&w=majority',
+    {useNewUrlParser: true, useUnifiedTopology:true}).then(() => {
+        console.log("Conexão com o MongoDB realizada com sucesso!");
+    });
+```
+> Substitua os parâmetros ``<username>``, ``<password>`` e ``<databaseName>`` com os parâmetros de seu banco de dados
+
+## Sobre o Uso do Banco de Dados NoSQl (MongoDB)
+O banco de dados utilizado para criação deste projeto foi o MongoDB Atlas, que é um DBaaS (Banco de Dados como Serviço), oferecido pela MongoDB. Por ser um serviço, o foco fica em administrar os dados armazenados e seu trafego CRUD, pois toda a infraestrutura e manutenção, assim como, a segurança da informação fica por conta da empresa MongoDB.
 
 
-## Para Iniciar o Servidor na Máquina
-Para verificar se deu tudo certo, faça as etapas a seguir:
+
+Foi adquirido a camada M0 (Free Tier Cluster) do MongoDB Atlas, que é o serviço gratuito (e limitado) para o nosso projeto. Segue na tabela abaixo as caracteristicas deste serviço:
+|       Configuração        |                                   Limitações                              |
+|---------------------------|---------------------------------------------------------------------------|
+|   Provedor *Cloud*        |   Cluster de camada MO só podem ser implantados em um conjunto específicos de regiões na Amazon Web Services [(AWS)](https://aws.amazon.com/pt/free/)        | 
+|   Storage Engine          |   Atlas utiliza MongoDB 4.4 para cluster M0                               |
+|   Fator de Replicação     |   O fator é definido como 3 *nodes* (nós) e não pode ser modificado para o serviço de camada M0                                               |
+|   Backup                  |   Não é habilitado a opção de backup no serviço de camada M0              |
+|   Encriptação de REST     |   Não é permitido o uso de Administração de Chaves Personalizadas         |
+|   API Access              |   Não é permitido modificar ou configurar o cluster MO usando endpoint da API Clusters                                                         |
+|   Autenticação            |   Os métodos permitidos são Password (SCRAM-SHA1), X.509 Certificates e AWS IAM                                                                 |
+|   Conexões                |   Tem no máximo de 500 conexões                                           |
+|   Database e Collections  |   Tem no máximo 100 databases e 500 Collections no total                  |
+|   Transferência de Dados  |   M0 limita o total de dados transferidos (input/output) do cluster em um período contínuo de 7 dias. Na qual o serviço tem um taxa de 10 GB (IN) e 10 GB (OUT) por período                             |
+|   Throughput              |   Operações máximas de 100 por segundo                                    |
+
+
+O serviço oferece suporte para deploy de ambientes em três provedores de nuvem:
+* AWS,
+* Google Cloud Plataform,
+* Microsoft Azure.
+> Para este projeto foi selecionado o AWS, pois a camada M0 só é permitida por este provedor.
+
+Ao conectar a plataforma são disponibilizadas três formas de realizar a conexão:
+* via linha de comando - Mongo Shell,
+* via aplicativo - Driver MongoDB nativo,
+* via Recurso Gráfico - Interface MongoDB Compass.
+
+Para realizar a conexão ao Cluster em qualquer uma delas é fornecido uma *String Connection*, na qual é só copiar e após a validação fornecer a senha cadastrada para o usuário. 
+> Para conectar ao serviço na nuvem, é necessário ter um Domain Name System (DNS) público para que seja resolvida a rota para o serviço. Desta forma, configure seu dispositivo ou o roteador na qual administra sua rede com o DNS Publico do Google.
+
+
+
+
+não é necessário :
 
 1. Abra o terminal no diretório na qual estão os arquivos do projeto;
 

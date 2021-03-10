@@ -1,13 +1,23 @@
 const express = require('express');
 const mongoose = require('mongoose');
+
+require('./models/home');
+const Home = mongoose.model('Home');
+
 const app = express();
 
-mongoose.connect('mongodb://username:password@host:27017/supernova?options...', 
+mongoose.connect('mongodb+srv://dbManager:Dkrock!@182@cluster0.gw5wz.mongodb.net/supernovaDB?retryWrites=true&w=majority', 
     {useNewUrlParser: true, useUnifiedTopology:true}).then(() => {
         console.log("Conexão com o MongoDB realizada com sucesso!");
+    }).catch((err) => {
+        console.log("ERRO: OCORREU UM PROBLEMA EM CONECTAR COM O MONGODB VIA DRIVER NODEJS");
     });
     
-app.get('/', function(req, res){
+app.get('/home', function(req, res){
+    
+});
+
+app.post('/home', function(req, res){
     
 });
 

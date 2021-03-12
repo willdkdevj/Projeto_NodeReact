@@ -15,7 +15,7 @@ function Home(){
     return (
         <div><Menu/>
         <Head>
-            <title>Supernova Tech</title>
+            <title>Home - Supernova Tech</title>
             <meta name="description" content="Site sobre desenvolvimento de sistemas, sites, aplicativos e outras tecnologias" />
         </Head>
             <Jumbotron fluid className="descr-top">

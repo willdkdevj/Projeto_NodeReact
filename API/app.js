@@ -5,6 +5,9 @@ const cors = require('cors');
 require('./models/home');
 const Home = mongoose.model('Home');
 
+require('./models/contato');
+const Contato = mongoose.model('Contato');
+
 const app = express();
 
 app.use(express.json());
@@ -16,7 +19,7 @@ app.use((req, res, next) => {
     next();
 })
 
-mongoose.connect('mongodb+srv://<username>:<password>@cluster0.<idcluster>.mongodb.net/<databaseName>?retryWrites=true&w=majority', 
+mongoose.connect('mongodb+srv://dbManager:Dkrock!@182@cluster0.gw5wz.mongodb.net/dbSupernova?retryWrites=true&w=majority', 
     {useNewUrlParser: true, useUnifiedTopology:true}).then(() => {
         console.log("Conexão com o MongoDB realizada com sucesso!");
     }).catch((err) => {
@@ -34,7 +37,7 @@ app.get('/home', async(req, res) => {
             error: true,
             message: "Não foram encontrados registros para a página!"
         });
-    })
+    });
 });
 
 app.post('/home', async(req, res) => {
@@ -70,12 +73,27 @@ app.post('/home', async(req, res) => {
             error: true,
             message: "ERRO: DADOS DA PÁGINA HOME NÃO CADASTRADOS DEVIDO A PROBLEMA NA CONEXÃO"
         });
-    })
+    });
 
     return res.json({
         error: false,
         message: "Dados da página /home cadastrados com sucesso!"
-    })
+    });    
+});
+
+app.post('/contato', async(req, res) => {
+
+    await Contato.create(req.body, (err) => {
+        if(err) return res.status(400).json({
+            error: true,
+            message: "ERRO: DADOS DA PÁGINA CONTATO NÃO CADASTRADOS DEVIDO A PROBLEMA NA CONEXÃO"
+        });
+    });
+
+    return res.json({
+        error: false,
+        message: "Dados da página /Contato cadastrados com sucesso!"
+    });
 });
 
 app.listen(8080, function(){

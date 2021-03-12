@@ -80,7 +80,7 @@ npm install --save bootstrap
 ```
 
 O parâmetro ``save`` permite que seja inserida a dependencia ao projeto. Isto é comprovado ao abrir o arquivo ``package.json``.
-Também foi incluído o framework Reactstrap, pois o Bootstrap não inclui bibliotecas css, onde também é utilizado o parâmetro ``save`` para inserir a dependencia ao projeto. Desta forma, executamos o seguinte comando:
+Também foi incluído o framework Reactstrap, pois o Reactstrap não inclui bibliotecas css que utilizamos no Bootstrap, onde também é utilizado o parâmetro ``save`` para inserir a dependencia ao projeto. Desta forma, executamos o seguinte comando:
 ```sh
 npm install --save reactstrap react react-dom
 ```
@@ -88,7 +88,7 @@ npm install --save reactstrap react react-dom
 O React foi essencial para utilizar componentes interativos em conjunto com o ReactDOM, permitindo minimizar eventuais erros que poderiam ocorrer na criação das interfaces do usuário (User Interface - UI). Isto porque seus componentes são partes lógicas que descrevem uma parte específica da interface do usuário.
 
 Para incluir o framework ao projeto foi criado o arquivo de referência ``_app.js`` (sim tem um underscore na frente) e importado sua biblioteca no diretório ``pages/``.
-Esta informação pode ser obtida pelo site do [Reactstrap](https://reactstrap.github.io/)
+Esta informação pode ser obtida pelo site do [NextJS](https://nextjs.org/docs/basic-features/built-in-css-support)
 ```sh
 import 'bootstrap/dist/css/bootstrap.min.css';
 

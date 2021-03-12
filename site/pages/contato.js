@@ -1,5 +1,6 @@
 import Menu from '../components/Menu';
 import Rodape from '../components/Rodape';
+
 import Head from 'next/head'
 import React from 'react';
 import { Jumbotron, Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
@@ -9,7 +10,7 @@ function Contato(){
         <div>
             <Menu />
                 <Head>
-                    <title>Supernova Tech</title>
+                    <title>Contato - Supernova Tech</title>
                     <meta name="description" content="Site sobre desenvolvimento de sistemas, sites, aplicativos e outras tecnologias" />
                 </Head>
             <Jumbotron fluid className="descr-form">

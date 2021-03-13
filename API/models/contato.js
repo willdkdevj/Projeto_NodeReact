@@ -13,7 +13,7 @@ const contato = new Schema({
     },
     txtProj: {
         type: String
-    },
+    }
 }, {
     timestamps: true,
 });

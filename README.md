@@ -1,11 +1,11 @@
-# Projeto de um Site, uma API e um App Mobile (JavaScript)
+# Projeto de um Site, uma API e um App Mobile Utilizando NodeJS, React e React Native (JavaScript)
 > Este projeto constitui na criação de um site, uma API transacional e um app mobile utilizando como plataforma o NodeJS.
 
 [![NPM Version][NPM-image]][npm-url]
 [![Bundle Size][npm-bundle-size]][npm-url]
 [![NODE Version][NODE-image]][node-url]
 
-Neste projeto JS foi criado um site, uma API e um app mobile para a plataforma de digital de uma empresa fictícia (Supernova Tech), na qual é baseada no NodeJS, utilizando bibliotecas do [React](https://pt-br.reactjs.org/), [NextJS](https://nextjs.org/) e dos frameworks [Reactstrap](https://reactstrap.github.io/) e [Bootstrap](https://getbootstrap.com/).
+Neste projeto JavaScript foi criado um site, uma API e um app mobile para a plataforma de digital de uma empresa fictícia (Supernova Tech), na qual é baseada no NodeJS, utilizando bibliotecas do [React](https://pt-br.reactjs.org/), [NextJS](https://nextjs.org/) e dos frameworks [Reactstrap](https://reactstrap.github.io/) e [Bootstrap](https://getbootstrap.com/).
 
 Desta forma, a premissa é ter o NodeJS instalado para poder instalar as bibliotecas e suas derivadas do React, pois o React não é tão otimizado pelos buscadores de site, mas o Next JS possuí a funcionalidade Server-Side Rendering (SSR) e a geração de sites estáticos para aplicativos web baseados em React, permitindo construir páginas HTML otimizadas para buscadores.
 
@@ -238,23 +238,27 @@ Ao conectar a plataforma são disponibilizadas três formas de realizar a conex�
 Para realizar a conexão ao Cluster em qualquer uma delas é fornecido uma *String Connection*, na qual é só copiar e após a validação fornecer a senha cadastrada para o usuário. 
 > Para conectar ao serviço na nuvem, é necessário ter um Domain Name System (DNS) público para que seja resolvida a rota para o serviço. Desta forma, configure seu dispositivo ou o roteador na qual administra sua rede com o DNS Publico do Google.
 
+## Sobre os Arquivos Models
+Os arquivos Model são responsáveis por manipular os dados entre o banco de dados e as aplicações, além de gerenciar todas as transações CRUD, onde no site do [Mongoose](https://mongoosejs.com/docs/models.html) existe uma vasta documentação sobre o tema.
+Na Model foi inserida as constantes para implementar o mongoose e a Schema, que é a coleção de tabela relacionada ao banco de dados. Desta forma, referenciados para a constante Schema a estrutura de dados a serem manuseadas por ela, indicando o parâmetro name do componente mais o valor a ser atribuido ou enviados todo o corpo de um formulário para o banco através do ``req.body`` no Express.
 
-
-
-não é necessário :
-
-1. Abra o terminal no diretório na qual estão os arquivos do projeto;
-
-2. Digite o seguinte comando:
+Para conseguir trabalhar com aplicativos externos é necessário instalar a dependência [``Cors``](https://www.npmjs.com/package/cors), que é um pacote NodeJS/Express que fornece um _middleware_ para tratamento de operações encaminhados pelas _requests_ possibilitando segurança.
+Desta forma, após realizar o importação do Cors ao arquivo principal ``app.js`` foi utilizado a função use() para listar todos os heards e habilitar a aplicação para utilizar o formato ``JSON``.
 ```sh
-node index.js
+app.use(express.json());
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+    res.header("Access-Control-Allow-Headers", "X-PINGOTHER, Content-Type, Autorization");
+    app.use(cors());
+    next();
+})
 ```
 
-3. Abra um navegador de sua preferência, mas não o abra em página anônima;
+Desta maneira que nossa API está preparada para trabalhalhar com as nossas aplicações.
 
-4. Digite o seguinte endereço: <http://localhost:8081/index> ou no lugar de "home" a página que você aplicou em um dos métodos get() do arquivo _index_;
+## Transações entre MongoDB e Site através da API
 
-5. Para parar o servidor pressione o seguinte comando no terminal **Ctrl+C**.
 
 ## Agradecimentos
 Obrigado por ter visto meus esforços para criar um modelo de roteamento de páginas com o Node Express!

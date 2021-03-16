@@ -11,13 +11,14 @@ import { Jumbotron, Container } from 'reactstrap';
 
 library.add(fas)
 
-function Home(){
+function Home({ data }){
     return (
-        <div><Menu/>
+        <div>
         <Head>
             <title>Home - Supernova Tech</title>
             <meta name="description" content="Site sobre desenvolvimento de sistemas, sites, aplicativos e outras tecnologias" />
-        </Head>
+        </Head>    
+            <Menu/>    
             <Jumbotron fluid className="descr-top">
                 <style>
                     {`.descr-top{
@@ -27,10 +28,10 @@ function Home(){
                     }`}
                 </style>
                 <Container className="text-center">
-                    <h1 className="display-4">Supernova Tecnology</h1>
-                    <p className="lead">Est recusandae internos qui molestiae nobis ad aliquam consequuntur aut alias corrupti quo veritatis voluptatum et quibusdam recusandae! Ut voluptatem facere ex enim nemo nam deleniti dolor quo recusandae eveniet et voluptatum quis.</p>
+                    <h1 className="display-4">{data.home.topTitulo}</h1>
+                    <p className="lead">{data.home.topSubTitulo}</p>
                     <p className="lead">
-                        <a href="/" className="btn btn-outline-secondary btn-lg mt-4">Conheça</a>
+                        <a href={data.home.topLnkBtn} className="btn btn-outline-secondary btn-lg mt-4">{data.home.topTxtBtn}</a>
                     </p>
                 </Container>
         </Jumbotron>
@@ -53,36 +54,36 @@ function Home(){
             </style>
             <Container className="text-center">
                 <div>
-                    <h2 className="display-3">Portfólio</h2>
+                    <h2 className="display-3">{data.home.ptfTitulo}</h2>
                     <p className="lead pb-4">
-                        Lorem ipsum dolor sit amet. Et dolor quasi et quia praesentium qui quidem dolores qui sunt quidem aut beatae quia aut voluptas quia ut repudiandae voluptatem.
+                        {data.home.ptfSubTitulo}
                     </p>
                 </div>
                 <div className="row">
                     <div className="col-md-4">
                         <div className="rounded-circle circulo centralizar">
-                            <FontAwesomeIcon icon="code-branch" />
+                            <FontAwesomeIcon icon={data.home.ptfIcnServUm} />
                         </div>
-                        <h2 className="mt-4 mb-4">Front-End</h2>
+                        <h2 className="mt-4 mb-4">{data.home.ptfServUmTitulo}</h2>
                         <p className="lead pb-4">
-                            Ab quasi reprehenderit ut saepe pariatur et voluptatem temporibus ut temporibus vero. 
+                            {data.home.ptfServUmSubTitulo} 
                         </p>
                     </div>
                     <div className="col-md-4">
                         <div className="rounded-circle circulo centralizar">
-                            <FontAwesomeIcon icon="code" />
+                            <FontAwesomeIcon icon={data.home.ptfIcnServDois}/>
                         </div>
-                        <h2 className="mt-4 mb-4">Back-End</h2>
+                        <h2 className="mt-4 mb-4">{data.home.ptfServDoisTitulo}</h2>
                         <p className="lead pb-4">
-                            Quo placeat impedit sed impedit officia vel iusto quidem. Id provident architecto ad illum iste eos aliquam voluptatibus qui quis nisi est corrupti placeat.
+                            {data.home.ptfServDoisSubTitulo}
                         </p>
                     </div>
                     <div className="col-md-4">
                         <div className="rounded-circle circulo centralizar">
-                            <FontAwesomeIcon icon="cloud-upload-alt" />
+                            <FontAwesomeIcon icon={data.home.ptfIcnServTres} />
                         </div>
-                        <h2 className="mt-4 mb-4">Full Stack</h2>
-                        <p className="lead pb-4">Ut numquam ipsam et voluptatem dignissimos et similique molestiae ut dolorem enim. </p>
+                        <h2 className="mt-4 mb-4">{data.home.ptfServTresTitulo}</h2>
+                        <p className="lead pb-4">{data.home.ptfServTresSubTitulo} </p>
                     </div>
                 </div>
             </Container>
@@ -92,4 +93,12 @@ function Home(){
     );
 }
 
+export async function getServerSideProps(){
+    const res = await fetch(`http://localhost:8080/home`);
+    const data = await res.json();
+
+    console.log(data);
+
+    return { props : { data }};
+}
 export default Home

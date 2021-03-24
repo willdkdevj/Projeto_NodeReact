@@ -19,7 +19,7 @@ app.use((req, res, next) => {
     next();
 })
 
-mongoose.connect('mongodb+srv://dbManager:Dkrock!@182@cluster0.gw5wz.mongodb.net/dbSupernova?retryWrites=true&w=majority', 
+mongoose.connect('mongodb+srv://<username>:<password>@cluster0.<idcluster>.mongodb.net/<databaseName>?retryWrites=true&w=majority', 
     {useNewUrlParser: true, useUnifiedTopology:true}).then(() => {
         console.log("Conexão com o MongoDB realizada com sucesso!");
     }).catch((err) => {
